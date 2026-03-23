@@ -13,7 +13,7 @@ export const useSocket = () => {
     if (!token) return;
 
     if (!socketInstance || socketInstance.disconnected) {
-      socketInstance = io('http://localhost:5000', {
+      socketInstance = io(import.meta.env.VITE_API_URL || 'http://localhost:5000', {
         auth: { token },
         transports: ['websocket', 'polling'],
         reconnectionAttempts: 10,
